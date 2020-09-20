@@ -14,8 +14,5 @@ Vagrant.configure("2") do |config|
 	 vb.cpus = 1
    end
   
-   config.vm.provision "shell", inline: <<-SHELL
-     apk update
-	 apk add --no-cache wget
-   SHELL
+   config.vm.provision "shell", path: ./alpine_install.sh
 end

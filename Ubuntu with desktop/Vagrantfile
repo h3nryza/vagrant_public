@@ -4,7 +4,7 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/groovy64"
-  config.vm.box_check_update = false
+  config.vm.box_check_update = true
 
   config.vm.synced_folder "C:/WORK_LOCAL/", "/opt/WORK_LOCAL"
 
@@ -15,11 +15,5 @@ Vagrant.configure("2") do |config|
    end
   
 
-  config.vm.provision "shell", inline: <<-SHELL
-     apt-get update -y 
-	 apt-get upgrade -y
-	 add-apt-repository universe
-	 apt install cinnamon-desktop-environment lightdm
-	 service lightdm start
-   SHELL
+  config.vm.provision "shell", path: ./ubu_desktop_Installer.sh
 end
